@@ -1,6 +1,10 @@
-from django.urls import path
+from django.contrib import admin
+from django.urls import include, path
 from . import views
 
 urlpatterns = [
-    path('', views.post_list, name='post_list'),
+    path('admin/', admin.site.urls),
+    path('', include('blog.urls')),
+    path('accounts/login/', views.LoginView.as_view(), name='loginn'),
+    path('accounts/logout/', views.LogoutView.as_view(), name='logout'),
 ]
